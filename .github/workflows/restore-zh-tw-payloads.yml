@@ -5,6 +5,7 @@ on:
     paths:
       - ".cursor-sync/payloads/**"
       - ".github/workflows/restore-zh-tw-payloads.yml"
+      - "scripts/restore_zh_tw_payloads.py"
 permissions:
   contents: write
 jobs:

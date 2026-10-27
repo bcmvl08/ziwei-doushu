@@ -14,6 +14,9 @@ def main():
             "".join((PAYLOAD_DIR / p).read_text().split())
             for p in parts
         )
+        # Repair known single-byte MCP corruption in page payload part a (Tw688→Tw788)
+        if path == "app/page.tsx":
+            b64 = b64.replace("OZeTw688AScQUzA", "OZeTw788AScQUzA", 1)
         raw = gzip.decompress(base64.b64decode(b64))
         h = hashlib.sha256(raw).hexdigest()
         if h != meta["sha256"]:
