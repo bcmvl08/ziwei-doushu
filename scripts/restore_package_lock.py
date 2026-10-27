@@ -14,6 +14,8 @@ def main():
     if missing:
         raise SystemExit(f"missing payloads: {missing}")
     b64 = "".join("".join((PAYLOAD_DIR / p).read_text().split()) for p in parts)
+    # Repair single-char corruption introduced when pushing part02 via MCP
+    b64 = b64.replace("g/FuTzennlawDXx2j5An", "g/FuTzennlowDXx2j5An", 1)
     raw = gzip.decompress(base64.b64decode(b64))
     h = hashlib.sha256(raw).hexdigest()
     if h != meta["sha256"]:
