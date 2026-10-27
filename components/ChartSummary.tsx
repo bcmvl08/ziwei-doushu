@@ -39,7 +39,7 @@ export default function ChartSummary({ chart }: ChartSummaryProps) {
       transition={{ delay: 0.3, duration: 0.5 }}
       className="space-y-4"
     >
-      {/* placeholder truncated - will use file from disk */}
+      {/* PLACEHOLDER_WILL_USE_PUSH_FILES */}
     </motion.div>
   );
 }
