@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import type { Palace, Star } from '@/lib/ziwei/types';
 import { STEMS, BRANCHES } from '@/lib/ziwei/constants';
+import { labelPalace, labelSiHua, labelStar } from '@/lib/ziwei/display-zh-tw';
 import clsx from 'clsx';
 
 interface PalaceCellProps {
@@ -11,7 +12,7 @@ interface PalaceCellProps {
   isSelected?: boolean;
   isSanFang?: boolean;
   delay?: number;
-  /** 疊加四化：星名 → 四化類型（'祿'/'權'/'科'/'忌'） */
+  /** 疊加四化：星名 → 四化類型（引擎鍵 '禄'/'权'/'科'/'忌'） */
   overlayStarSiHua?: Record<string, string>;
   /** 疊加標籤：'年'（流年）或 '限'（大限） */
   overlayLabel?: string;
@@ -19,9 +20,10 @@ interface PalaceCellProps {
   onSiHuaClick?: (starName: string, siHua: string) => void;
 }
 
+/** Keys must match iztro / generateChart siHua vocabulary (zh-CN). */
 const SIHUA_STYLES: Record<string, string> = {
-  '祿': 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-  '權': 'text-blue-400 bg-blue-500/10 border-blue-500/30',
+  '禄': 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
+  '权': 'text-blue-400 bg-blue-500/10 border-blue-500/30',
   '科': 'text-yellow-400 bg-yellow-500/10 border-yellow-500/30',
   '忌': 'text-red-400 bg-red-500/10 border-red-500/30',
 };
@@ -48,7 +50,7 @@ const SiHuaBadge = ({
       onClick={onClick}
     >
       {overlay && label && <span className="mr-px opacity-70">{label}</span>}
-      {siHua}
+      {labelSiHua(siHua)}
     </span>
   );
 };
@@ -110,7 +112,7 @@ export default function PalaceCell({
         )}
           style={!isMingGong && !isShenGong ? { color: 'var(--t-faint)' } : undefined}
         >
-          {name}
+          {labelPalace(name)}
         </span>
         {isMingGong && (
           <span className="text-[7px] text-amber-500/80 border border-amber-500/30 px-0.5 rounded leading-tight">命</span>
@@ -140,7 +142,7 @@ export default function PalaceCell({
                 'text-[13px] leading-tight font-bold tracking-tight cursor-pointer hover:brightness-125 transition-all',
                 star.brightness === 'bright' ? 'text-amber-300' : star.brightness === 'dim' ? 'text-amber-700/80' : 'text-amber-500',
               )}>
-                {star.name}
+                {labelStar(star.name)}
               </span>
               {star.siHua && <SiHuaBadge siHua={star.siHua} />}
               {overlaySiHua && (
@@ -166,7 +168,7 @@ export default function PalaceCell({
             const overlaySiHua = overlayStarSiHua?.[s.name];
             return (
               <span key={s.name} className="inline-flex items-center text-[9px] text-sky-500/70 leading-tight">
-                {s.name}
+                {labelStar(s.name)}
                 {s.siHua && <SiHuaBadge siHua={s.siHua} />}
                 {overlaySiHua && (
                   <SiHuaBadge
@@ -190,7 +192,7 @@ export default function PalaceCell({
         <div className="flex flex-wrap gap-x-1">
           {shaStars.map(s => (
             <span key={s.name} className="text-[9px] text-red-500/60 leading-tight">
-              {s.name}{s.siHua && <SiHuaBadge siHua={s.siHua} />}
+              {labelStar(s.name)}{s.siHua && <SiHuaBadge siHua={s.siHua} />}
             </span>
           ))}
         </div>
