@@ -47,6 +47,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ book: 
       </div>
 
       <article className="max-w-3xl mx-auto px-6 py-12">
+        {/* 標題 */}
         <div className="text-center mb-10">
           <div style={{ fontSize: '11px', color: 'var(--tx-3)', letterSpacing: '0.25em', marginBottom: '8px' }}>
             《{book.title}》· {book.dynasty}
@@ -61,6 +62,7 @@ export default async function ChapterPage({ params }: { params: Promise<{ book: 
           )}
         </div>
 
+        {/* 段落 */}
         <div style={{ background: 'var(--bg-card)', borderRadius: '14px', border: '1px solid rgba(184,146,42,0.2)', padding: '32px 28px' }}>
           {chapter.paragraphs.map((p, i) => (
             <div
@@ -73,25 +75,57 @@ export default async function ChapterPage({ params }: { params: Promise<{ book: 
                 scrollMarginTop: '80px',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
-                <span style={{ fontSize: '11px', color: 'var(--ac)', fontWeight: 600, letterSpacing: '0.1em', minWidth: '24px' }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: '12px',
+              }}>
+                <span style={{
+                  fontSize: '11px',
+                  color: 'var(--ac)',
+                  fontWeight: 600,
+                  letterSpacing: '0.1em',
+                  minWidth: '24px',
+                }}>
                   {String(p.idx).padStart(2, '0')}
                 </span>
                 <p style={{
-                  flex: 1, fontSize: '16px', color: 'var(--tx-0)', lineHeight: 2, letterSpacing: '0.04em',
+                  flex: 1,
+                  fontSize: '16px',
+                  color: 'var(--tx-0)',
+                  lineHeight: 2,
+                  letterSpacing: '0.04em',
                   fontFamily: '"PingFang SC", "Hiragino Sans GB", serif',
                 }}>
                   {p.text}
                 </p>
               </div>
               {p.translation && (
-                <div style={{ marginTop: '8px', marginLeft: '36px', padding: '8px 12px', background: 'rgba(184,146,42,0.05)', borderRadius: '6px', fontSize: '13px', color: 'var(--tx-2)', lineHeight: 1.8 }}>
+                <div style={{
+                  marginTop: '8px',
+                  marginLeft: '36px',
+                  padding: '8px 12px',
+                  background: 'rgba(184,146,42,0.05)',
+                  borderRadius: '6px',
+                  fontSize: '13px',
+                  color: 'var(--tx-2)',
+                  lineHeight: 1.8,
+                }}>
                   <span style={{ fontSize: '10px', color: 'var(--ac)', marginRight: '6px' }}>白話</span>
                   {p.translation}
                 </div>
               )}
               {p.niNote && (
-                <div style={{ marginTop: '8px', marginLeft: '36px', padding: '8px 12px', background: 'rgba(196,90,45,0.05)', borderRadius: '6px', fontSize: '13px', color: 'var(--tx-2)', lineHeight: 1.8 }}>
+                <div style={{
+                  marginTop: '8px',
+                  marginLeft: '36px',
+                  padding: '8px 12px',
+                  background: 'rgba(196,90,45,0.05)',
+                  borderRadius: '6px',
+                  fontSize: '13px',
+                  color: 'var(--tx-2)',
+                  lineHeight: 1.8,
+                }}>
                   <span style={{ fontSize: '10px', color: 'var(--ji)', marginRight: '6px' }}>倪師注</span>
                   {p.niNote}
                 </div>
@@ -100,15 +134,39 @@ export default async function ChapterPage({ params }: { params: Promise<{ book: 
           ))}
         </div>
 
+        {/* 章節導航 */}
         <div style={{ marginTop: '24px', display: 'flex', justifyContent: 'space-between', gap: '12px' }}>
           {prevIdx >= 0 ? (
-            <Link href={`/library/${book.slug}/${prevIdx}`} style={{ flex: 1, padding: '14px 18px', background: 'var(--bg-card)', border: '1px solid rgba(184,146,42,0.2)', borderRadius: '10px', textDecoration: 'none', color: 'var(--tx-0)' }}>
+            <Link
+              href={`/library/${book.slug}/${prevIdx}`}
+              style={{
+                flex: 1,
+                padding: '14px 18px',
+                background: 'var(--bg-card)',
+                border: '1px solid rgba(184,146,42,0.2)',
+                borderRadius: '10px',
+                textDecoration: 'none',
+                color: 'var(--tx-0)',
+              }}
+            >
               <div style={{ fontSize: '10px', color: 'var(--tx-3)', letterSpacing: '0.2em', marginBottom: '2px' }}>← 上一章</div>
               <div style={{ fontSize: '13px', fontWeight: 500 }}>{book.chapters[prevIdx].title}</div>
             </Link>
           ) : <div style={{ flex: 1 }} />}
           {nextIdx < book.chapters.length ? (
-            <Link href={`/library/${book.slug}/${nextIdx}`} style={{ flex: 1, padding: '14px 18px', background: 'var(--bg-card)', border: '1px solid rgba(184,146,42,0.2)', borderRadius: '10px', textDecoration: 'none', color: 'var(--tx-0)', textAlign: 'right' }}>
+            <Link
+              href={`/library/${book.slug}/${nextIdx}`}
+              style={{
+                flex: 1,
+                padding: '14px 18px',
+                background: 'var(--bg-card)',
+                border: '1px solid rgba(184,146,42,0.2)',
+                borderRadius: '10px',
+                textDecoration: 'none',
+                color: 'var(--tx-0)',
+                textAlign: 'right',
+              }}
+            >
               <div style={{ fontSize: '10px', color: 'var(--tx-3)', letterSpacing: '0.2em', marginBottom: '2px' }}>下一章 →</div>
               <div style={{ fontSize: '13px', fontWeight: 500 }}>{book.chapters[nextIdx].title}</div>
             </Link>

@@ -16,6 +16,7 @@ export const metadata = {
 export default function LibraryHomePage() {
   return (
     <div style={{ background: 'var(--bg-page)', minHeight: '100vh' }}>
+      {/* 頂欄 */}
       <div className="px-6 py-4 flex items-center justify-between"
         style={{ borderBottom: '1px solid rgba(184,146,42,0.15)', background: 'var(--bg-page)' }}>
         <Link href="/" style={{ fontSize: '12px', color: 'var(--ac)', letterSpacing: '0.3em', textDecoration: 'none' }}>
@@ -29,6 +30,7 @@ export default function LibraryHomePage() {
         </Link>
       </div>
 
+      {/* Hero */}
       <div className="text-center px-6 py-16">
         <div className="flex items-center justify-center gap-3 mb-4">
           <div style={{ height: '1px', width: '48px', background: 'linear-gradient(to right, transparent, rgba(184,146,42,0.4))' }} />
@@ -44,10 +46,12 @@ export default function LibraryHomePage() {
         </p>
       </div>
 
+      {/* 搜索 */}
       <div className="max-w-2xl mx-auto px-6 mb-12">
         <LibrarySearch />
       </div>
 
+      {/* 古籍列表 */}
       <div className="max-w-5xl mx-auto px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {ALL_BOOKS.map(book => (
@@ -94,6 +98,7 @@ export default function LibraryHomePage() {
           ))}
         </div>
 
+        {/* 底部說明 */}
         <div style={{ marginTop: '60px', padding: '24px', background: 'rgba(184,146,42,0.05)', borderRadius: '10px', textAlign: 'center' }}>
           <div style={{ fontSize: '11px', color: 'var(--ac-dim)', fontWeight: 600, letterSpacing: '0.15em', marginBottom: '8px' }}>
             關於本庫

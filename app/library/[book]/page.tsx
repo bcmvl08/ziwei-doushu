@@ -41,6 +41,7 @@ export default async function BookPage({ params }: { params: Promise<{ book: str
       </div>
 
       <div className="max-w-3xl mx-auto px-6 py-12">
+        {/* 書名信息 */}
         <div className="text-center mb-12">
           <div style={{ fontSize: '11px', color: 'var(--tx-3)', letterSpacing: '0.3em', marginBottom: '8px' }}>
             {book.dynasty} · {book.author}
@@ -53,6 +54,7 @@ export default async function BookPage({ params }: { params: Promise<{ book: str
           </p>
         </div>
 
+        {/* 章節目錄 */}
         <div style={{ background: 'var(--bg-card)', borderRadius: '14px', border: '1px solid rgba(184,146,42,0.2)', overflow: 'hidden' }}>
           <div style={{ padding: '14px 20px', borderBottom: '1px solid rgba(184,146,42,0.15)', fontSize: '11px', color: 'var(--tx-3)', letterSpacing: '0.3em' }}>
             CHAPTERS · 章節目錄
