@@ -168,10 +168,202 @@ export default function HemingPage() {
         background: isDark ? 'rgba(2,8,16,0.88)' : 'rgba(250,245,235,0.92)',
         backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
         borderBottom: '1px solid var(--bdr)',
-        display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px',
+        display: 'flex', alignItems: 'center', padding: '0 24px', height: '52px', gap: '16px',
+      }}>
+        <button
+          onClick={() => router.push('/')}
+          style={{
+            display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px',
             color: 'var(--tx-3)', background: 'none', border: 'none', cursor: 'pointer',
           }}
         >
           <span style={{ fontSize: '16px' }}>‹</span>
           <span>返回</span>
         </button>
+        <div style={{ width: '1px', height: '20px', background: 'var(--bdr-med)' }} />
+        <span style={{ fontSize: '12px', color: 'var(--ac)', letterSpacing: '0.2em' }}>合盤分析</span>
+        <div style={{ flex: 1 }} />
+        <span style={{ fontSize: '11px', color: 'var(--tx-3)' }}>感情 · 合夥 · 親子 · 朋友</span>
+      </header>
+
+      {/* 主體 */}
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px 24px 80px' }}>
+
+        {/* 標題 */}
+        <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+          <div style={{ fontSize: '28px', color: 'var(--ac)', opacity: 0.15, marginBottom: '12px' }}>☯</div>
+          <h1 style={{ fontSize: '22px', fontWeight: 600, letterSpacing: '0.15em', color: 'var(--tx-0)', marginBottom: '8px' }}>
+            紫微合盤
+          </h1>
+          <p style={{ fontSize: '13px', color: 'var(--tx-3)', lineHeight: 1.6 }}>
+            輸入兩個人的出生信息，AI 基於倪海廈體系分析雙方命盤的緣分匹配度、感情走向與相處建議
+          </p>
+        </div>
+
+        {/* 雙欄表單 */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '24px' }}
+          className="heming-grid">
+          {/* 甲方 */}
+          <div style={cardStyle}>
+            <span style={labelStyle}>甲方 — A</span>
+            <BirthForm
+              hideSubmit
+              onSubmit={() => {}}
+              onFormSave={setFormA}
+            />
+          </div>
+
+          {/* 乙方 */}
+          <div style={cardStyle}>
+            <span style={labelStyle}>乙方 — B</span>
+            <BirthForm
+              hideSubmit
+              onSubmit={() => {}}
+              onFormSave={setFormB}
+            />
+          </div>
+        </div>
+
+        {/* ═══ 大合盤分析框（視覺中心，始終顯示）════════════════ */}
+        <div ref={analysisRef} style={{
+          ...cardStyle,
+          minHeight: '320px',
+          padding: '32px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: (!analysis && !analyzing) ? 'center' : 'flex-start',
+        }}>
+          {/* 區塊標題 */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: (analysis || analyzing) ? '20px' : '24px' }}>
+            <span style={{ color: 'var(--ac)', opacity: 0.6 }}>◉</span>
+            <span style={{ fontSize: '11px', letterSpacing: '0.3em', color: 'var(--tx-3)' }}>合盤分析 · HEMING</span>
+          </div>
+
+          {/* 狀態分支 */}
+          {!analysis && !analyzing && (
+            <div style={{ textAlign: 'center', padding: '32px 0' }}>
+              <div style={{ fontSize: '13px', color: 'var(--tx-3)', marginBottom: '24px', lineHeight: 1.7 }}>
+                填好雙方出生信息後，點擊下方按鈕<br />
+                AI 將基於倪海廈體系深度分析兩人緣分匹配度
+              </div>
+              <button
+                onClick={() => runAnalysis()}
+                style={{
+                  padding: '14px 40px', borderRadius: 'var(--r-pill)', border: 'none',
+                  background: 'linear-gradient(135deg, #9a6210, #c88020)',
+                  color: '#fff8e8', fontSize: '14px', fontWeight: 600,
+                  letterSpacing: '0.15em', cursor: 'pointer',
+                  boxShadow: '0 4px 16px rgba(140,100,20,0.25)',
+                  transition: 'transform 0.15s',
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-1px)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+              >
+                開始合盤分析
+              </button>
+              {formError && (
+                <div style={{ marginTop: '20px', fontSize: '13px', color: '#dc2626' }}>
+                  {formError}
+                </div>
+              )}
+            </div>
+          )}
+
+          {analyzing && !analysis && (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', padding: '40px 0', color: 'var(--tx-3)', fontSize: '13px' }}>
+              <div style={{
+                width: '14px', height: '14px',
+                border: '2px solid var(--bdr-med)', borderTopColor: 'var(--ac)',
+                borderRadius: '50%', animation: 'spin 0.8s linear infinite',
+              }} />
+              正在對比雙方命盤…
+            </div>
+          )}
+
+          {analysis && <AiContent text={analysis} streaming={analyzing} />}
+
+          {analysisError && (
+            <div style={{ padding: '12px 16px', borderRadius: '10px', border: '1px solid var(--bdr)', background: 'var(--bg-card)', fontSize: '13px', color: 'var(--tx-2)', marginTop: '12px' }}>
+              {apiMissing
+                ? '開源版不含合盤 AI 分析接口（/api/heming），需要你自己實現後才能用。兩人的命盤可以分別到「排盤」頁（/chart）查看。'
+                : '分析暫時不可用，請重試。'}
+            </div>
+          )}
+        </div>
+
+        {/* ═══ 針對合盤的追問聊天框（僅分析完成後顯示）═══════════ */}
+        {analysis && (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '16px' }}>
+            <div style={{ fontSize: '11px', letterSpacing: '0.2em', color: 'var(--tx-3)', marginBottom: '4px' }}>
+              針對此次合盤繼續追問
+            </div>
+
+            {/* 快捷問題 */}
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              {[
+                '感情匹配度如何？',
+                '適合合夥創業嗎？',
+                '兩人結婚是否合適？',
+                '哪方面最容易產生矛盾？',
+                '財運是否互補？',
+              ].map(q => (
+                <button
+                  key={q}
+                  onClick={() => { setQuestion(q); runAnalysis(q); }}
+                  disabled={analyzing}
+                  style={{
+                    fontSize: '12px', padding: '6px 14px',
+                    borderRadius: 'var(--r-pill)',
+                    border: '1px solid var(--bdr-med)',
+                    background: 'transparent', color: 'var(--tx-2)',
+                    cursor: analyzing ? 'not-allowed' : 'pointer',
+                    opacity: analyzing ? 0.5 : 1,
+                    transition: 'border-color 0.15s',
+                  }}
+                  onMouseEnter={e => { if (!analyzing) (e.currentTarget as HTMLElement).style.borderColor = 'var(--ac-bdr)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'var(--bdr-med)'; }}
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+
+            {/* 輸入框 + 追問按鈕 */}
+            <div style={{ display: 'flex', gap: '8px' }}>
+              <input
+                type="text"
+                value={question}
+                onChange={e => setQuestion(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter' && !analyzing) runAnalysis(question || undefined); }}
+                placeholder="繼續追問，如：哪幾年是兩人感情關鍵期？"
+                disabled={analyzing}
+                className="input-base"
+                style={{ fontSize: '13px', flex: 1 }}
+              />
+              <button
+                onClick={() => runAnalysis(question || undefined)}
+                disabled={analyzing}
+                style={{
+                  padding: '10px 20px', borderRadius: 'var(--r-sm)', border: 'none',
+                  background: analyzing ? 'var(--bg-2)' : 'var(--tx-0)',
+                  color: analyzing ? 'var(--tx-3)' : 'white',
+                  fontSize: '13px', fontWeight: 500,
+                  cursor: analyzing ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.15s', whiteSpace: 'nowrap',
+                }}
+              >
+                {analyzing ? '分析中…' : '繼續追問'}
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <style>{`
+        @media (max-width: 680px) {
+          .heming-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </div>
+  );
+}
