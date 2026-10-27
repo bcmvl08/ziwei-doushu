@@ -39,6 +39,9 @@ for (const file of files) {
   const before = fs.readFileSync(file, 'utf8');
   let after = convert(before);
 
+  // OpenCC s2tw maps 丑→醜; keep the earthly-branch form 丑 in astrology copy.
+  after = after.replace(/醜/g, '丑');
+
   // Force locale markers to zh-TW / zh_TW where we set them for the site shell.
   if (file.endsWith(`${path.sep}layout.tsx`)) {
     after = after
