@@ -154,7 +154,7 @@ export default async function KnowledgePage({ params }: { params: Promise<{ star
 
         {data.parsed.lundian && (
           <Section title="核心論斷">
-            <div style={{ fontSize: '15px', color: 'var(--tx-0)', lineHeight: 2, letterSpacing: '0.02em', whiteSpace: 'pre-wrap' }}>
+            <div style={{ fontSize: '14px', color: 'var(--tx-0)', lineHeight: 2, letterSpacing: '0.02em', whiteSpace: 'pre-wrap' }}>
               {data.parsed.lundian}
             </div>
           </Section>
