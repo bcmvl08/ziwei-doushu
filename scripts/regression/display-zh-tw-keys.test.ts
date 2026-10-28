@@ -86,6 +86,11 @@ assert.equal(twHits.length, cnHits.length);
 const mingHits = searchClassics('命宮', 5);
 assert.ok(mingHits.length > 0, 'TW 命宮 must find 命宫 in corpus');
 
+// Auxiliary blurbs in StarDetailPanel must key on engine names (zh-CN)
+assert.equal(labelStar('左辅'), '左輔');
+assert.equal(labelStar('铃星'), '鈴星');
+assert.equal(labelStar('陀罗'), '陀羅');
+
 console.log('display-zh-tw-keys.test.ts OK', {
   siHuas,
   palaceCount: palaceNames.length,
