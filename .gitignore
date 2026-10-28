@@ -7,3 +7,8 @@ dist/
 *.tsbuildinfo
 .DS_Store
 node_modules
+
+# local agent tooling
+agent-tools/
+.env.local
+.next/
