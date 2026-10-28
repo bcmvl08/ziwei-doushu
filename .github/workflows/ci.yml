@@ -11,10 +11,12 @@ jobs:
     name: 型別檢查 + 排盤回歸
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # Pin to commit SHA (actions/checkout@v4) for supply-chain integrity
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       # 倉庫已提交 package-lock.json：按鎖定版本安裝，並開 npm 快取
-      - uses: actions/setup-node@v4
+      # Pin to commit SHA (actions/setup-node@v4)
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
           cache: npm
