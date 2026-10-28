@@ -4,7 +4,7 @@
 
 ### 算法是公開的傳統智慧，不應該被鎖在圍牆裡
 
-[![CI](https://github.com/Renhuai123/ziwei-doushu/actions/workflows/ci.yml/badge.svg)](https://github.com/Renhuai123/ziwei-doushu/actions/workflows/ci.yml)
+[![CI](https://github.com/bcmvl08/ziwei-doushu/actions/workflows/ci.yml/badge.svg)](https://github.com/bcmvl08/ziwei-doushu/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](./LICENSE)
 [![Dataset: CC BY 4.0](https://img.shields.io/badge/dataset-CC%20BY%204.0-green.svg)](./DATASET-LICENSE)
 
@@ -273,8 +273,8 @@ Expand-Archive combined.zip
 ## 三、快速開始
 
 ```bash
-# 克隆
-git clone https://github.com/Renhuai123/ziwei-doushu.git
+# 克隆（本 fork · zh-TW）
+git clone https://github.com/bcmvl08/ziwei-doushu.git
 cd ziwei-doushu
 
 # 安裝依賴
