@@ -5,7 +5,9 @@
       "package-lock.part01.b64",
       "package-lock.part02.b64",
       "package-lock.part03.b64",
-      "package-lock.part04.b64"
+      "package-lock.part04a.b64",
+      "package-lock.part04b.b64",
+      "package-lock.part04c.b64"
     ],
     "sha256": "2b1c65c1e59fe95a49d83ed8280afaa4eed1c00a73d41dd5634a597a87f9264f",
     "bytes": 118753
