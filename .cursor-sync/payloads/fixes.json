@@ -1,0 +1,14 @@
+[
+  {
+    "part": 0,
+    "index": 1682,
+    "expect": "N",
+    "replace": "P"
+  },
+  {
+    "part": 4,
+    "index": 498,
+    "expect": "E",
+    "replace": "G"
+  }
+]

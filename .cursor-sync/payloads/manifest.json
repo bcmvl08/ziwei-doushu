@@ -1,0 +1,16 @@
+{
+  "package-lock.json": {
+    "payloads": [
+      "package-lock.part00.b64",
+      "package-lock.part01.b64",
+      "package-lock.part02.b64",
+      "package-lock.part03.b64",
+      "package-lock.part04.b64",
+      "package-lock.part05.b64",
+      "package-lock.part06.b64",
+      "package-lock.part07.b64"
+    ],
+    "sha256": "7364f24375e022926c1b32a6ba617f0c8206bf57cedb5b6631f739a80ebde112",
+    "bytes": 95167
+  }
+}
