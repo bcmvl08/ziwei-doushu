@@ -6,6 +6,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   check:
     name: 型別檢查 + 排盤回歸
@@ -24,8 +27,28 @@ jobs:
       - name: 安裝依賴
         run: npm ci --no-audit --no-fund
 
+      - name: npm audit
+        run: npm audit --audit-level=high
+
       - name: 型別檢查
         run: npm run typecheck
 
       - name: 排盤引擎回歸
         run: npm test
+
+  security:
+    name: Semgrep
+    runs-on: ubuntu-latest
+    steps:
+      # Pin to commit SHA (actions/checkout@v4) for supply-chain integrity
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+
+      # System Python on ubuntu-latest rejects pip installs, so use a venv.
+      - name: Install Semgrep
+        run: |
+          python3 -m venv "$RUNNER_TEMP/semgrep"
+          "$RUNNER_TEMP/semgrep/bin/pip" install semgrep
+          echo "$RUNNER_TEMP/semgrep/bin" >> "$GITHUB_PATH"
+
+      - name: Semgrep scan
+        run: semgrep scan --config=auto --error --exclude=node_modules --exclude=.next

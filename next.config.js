@@ -9,7 +9,7 @@ const securityHeaders = [
   },
   {
     key: 'Content-Security-Policy',
-    // Allow Next.js runtime, Vercel Analytics/Speed Insights, and inline theme boot script in layout.
+    // Theme boot is a same-origin static script. unsafe-inline stays for Next.js flight scripts.
     value: [
       "default-src 'self'",
       "base-uri 'self'",
