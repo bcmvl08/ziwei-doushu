@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
+import Script from 'next/script';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { Analytics } from '@vercel/analytics/next';
@@ -36,11 +38,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
+
   return (
     <html lang="zh-TW" suppressHydrationWarning>
       <head>
-        <script src="/theme-boot.js" />
+        <Script src="/theme-boot.js" strategy="beforeInteractive" nonce={nonce} />
       </head>
       <body className="min-h-screen">
         <ThemeProvider>
