@@ -5,6 +5,7 @@ import type { BirthInfo } from '@/lib/ziwei/types';
 import { SHICHEN } from '@/lib/ziwei/constants';
 import { useTheme } from '@/components/ThemeProvider';
 import { PROVINCES } from '@/lib/ziwei/cities';
+import { labelRegion } from '@/lib/ziwei/display-zh-tw';
 
 export interface BirthFormState {
   name: string;
@@ -123,7 +124,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
   const summaryText = showSummary
     ? [
         `${y}年${m}月${d}日`,
-        form.city || (form.province ? form.province : ''),
+        labelRegion(form.city) || (form.province ? labelRegion(form.province) : ''),
         form.unknownTime ? '時辰不詳' : `${SHICHEN_NAMES[branch]}時`,
         form.gender === 'male' ? '男' : '女',
       ].filter(Boolean).join(' · ')
@@ -272,7 +273,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
             <select value={form.province} onChange={e => handleProvince(e.target.value)} aria-label="省份">
               <option value="">省份</option>
               {PROVINCES.map(p => (
-                <option key={p.name} value={p.name}>{p.name}</option>
+                <option key={p.name} value={p.name}>{labelRegion(p.name)}</option>
               ))}
             </select>
             <select
@@ -283,7 +284,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
             >
               <option value="">{form.province ? '城市' : '先選省'}</option>
               {cityList.map(c => (
-                <option key={c.name} value={c.name}>{c.name}</option>
+                <option key={c.name} value={c.name}>{labelRegion(c.name)}</option>
               ))}
             </select>
           </div>
@@ -451,7 +452,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
           >
             <option value="">省份 / 直轄市</option>
             {PROVINCES.map(p => (
-              <option key={p.name} value={p.name}>{p.name}</option>
+              <option key={p.name} value={p.name}>{labelRegion(p.name)}</option>
             ))}
           </select>
           <select
@@ -464,7 +465,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
           >
             <option value="">{form.province ? '城市' : '先選省份'}</option>
             {cityList.map(c => (
-              <option key={c.name} value={c.name}>{c.name}</option>
+              <option key={c.name} value={c.name}>{labelRegion(c.name)}</option>
             ))}
           </select>
         </div>
@@ -477,7 +478,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
               exit={{ opacity: 0 }}
               style={{ fontSize: '10px', color: isDark ? 'rgba(180,210,235,0.85)' : 'rgba(100,70,10,0.5)', marginTop: '5px' }}
             >
-              {form.city || '（請選擇城市）'} · 經度 {form.longitude.toFixed(1)}°E · 時差 {offsetMin > 0 ? '+' : ''}{offsetMin} 分鐘
+              {labelRegion(form.city) || '（請選擇城市）'} · 經度 {form.longitude.toFixed(1)}°E · 時差 {offsetMin > 0 ? '+' : ''}{offsetMin} 分鐘
             </motion.p>
           ) : (
             <motion.p

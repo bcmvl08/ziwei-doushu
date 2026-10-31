@@ -6,6 +6,7 @@
  */
 
 import type { SiHua } from './types';
+import { simplifiedToTraditional } from '../zh/simplified-to-traditional';
 
 /** 四化：engine key → zh-TW label */
 export const SIHUA_LABEL: Record<SiHua, string> = {
@@ -49,6 +50,40 @@ const STAR_LABEL: Record<string, string> = {
   天姚: '天姚',
   红鸾: '紅鸞',
   天喜: '天喜',
+  // 岁前 / 将前 / 杂曜等（引擎 zh-CN 名）
+  龙德: '龍德',
+  龙池: '龍池',
+  阴煞: '陰煞',
+  华盖: '華蓋',
+  凤阁: '鳳閣',
+  台辅: '台輔',
+  天伤: '天傷',
+  蜚廉: '蜚廉',
+  岁建: '歲建',
+  晦气: '晦氣',
+  丧门: '喪門',
+  贯索: '貫索',
+  岁破: '歲破',
+  将星: '將星',
+  攀鞍: '攀鞍',
+  岁驿: '歲驛',
+  息神: '息神',
+  灾煞: '災煞',
+  天煞: '天煞',
+  指背: '指背',
+  月煞: '月煞',
+  亡神: '亡神',
+  飞廉: '飛廉',
+  官符: '官符',
+  小耗: '小耗',
+  大耗: '大耗',
+  伏兵: '伏兵',
+  奏书: '奏書',
+  喜神: '喜神',
+  力士: '力士',
+  青龙: '青龍',
+  将军: '將軍',
+  博士: '博士',
 };
 
 /**
@@ -88,7 +123,15 @@ export function labelSiHua(siHua: string | undefined | null): string {
 }
 
 export function labelStar(name: string): string {
-  return STAR_LABEL[name] ?? name;
+  const mapped = STAR_LABEL[name];
+  if (mapped) return mapped;
+  return simplifiedToTraditional(name);
+}
+
+/** Province / city names in birth form (values stay zh-CN for lookup). */
+export function labelRegion(name: string): string {
+  if (!name) return name;
+  return simplifiedToTraditional(name);
 }
 
 export function labelPalace(name: string): string {

@@ -7,6 +7,7 @@ import { generateChart } from '../../lib/ziwei/algorithm';
 import {
   SIHUA_KEYS,
   labelPalace,
+  labelRegion,
   labelSiHua,
   labelStar,
   SIHUA_LABEL,
@@ -90,6 +91,14 @@ assert.ok(mingHits.length > 0, 'TW 命宮 must find 命宫 in corpus');
 assert.equal(labelStar('左辅'), '左輔');
 assert.equal(labelStar('铃星'), '鈴星');
 assert.equal(labelStar('陀罗'), '陀羅');
+assert.equal(labelStar('龙德'), '龍德');
+assert.equal(labelStar('龙池'), '龍池');
+assert.equal(labelStar('阴煞'), '陰煞');
+assert.equal(labelStar('华盖'), '華蓋');
+
+assert.equal(labelRegion('广东省'), '廣東省');
+assert.equal(labelRegion('黑龙江省'), '黑龍江省');
+assert.equal(labelRegion('朝阳区'), '朝陽區');
 
 console.log('display-zh-tw-keys.test.ts OK', {
   siHuas,
