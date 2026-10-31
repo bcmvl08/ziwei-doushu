@@ -15,6 +15,7 @@ import {
 import { searchClassics } from '../../lib/classics';
 import { traditionalToSimplified } from '../../lib/zh/traditional-to-simplified';
 import { buildSiHuaOverlay } from '../../components/TimeNav';
+import { PROVINCES } from '../../lib/ziwei/cities';
 
 const chart = generateChart({
   year: 1990,
@@ -95,10 +96,44 @@ assert.equal(labelStar('龙德'), '龍德');
 assert.equal(labelStar('龙池'), '龍池');
 assert.equal(labelStar('阴煞'), '陰煞');
 assert.equal(labelStar('华盖'), '華蓋');
+assert.equal(labelStar('天厨'), '天廚');
+assert.equal(labelStar('封诰'), '封誥');
+assert.equal(labelStar('天虚'), '天虛');
 
 assert.equal(labelRegion('广东省'), '廣東省');
 assert.equal(labelRegion('黑龙江省'), '黑龍江省');
 assert.equal(labelRegion('朝阳区'), '朝陽區');
+assert.equal(labelRegion('广西壮族自治区'), '廣西壯族自治區');
+assert.equal(labelRegion('新疆维吾尔自治区'), '新疆維吾爾自治區');
+assert.equal(labelRegion('香港特别行政区'), '香港特別行政區');
+assert.equal(labelRegion('云南省'), '雲南省');
+assert.equal(labelRegion('甘肃省'), '甘肅省');
+assert.equal(labelRegion('连云港'), '連雲港');
+assert.equal(labelRegion('密云'), '密雲');
+
+/** Simplified-only chars that must not appear in zh-Hant region labels */
+const REGION_SIMPLIFIED = /[厨诰虚壮云肃尔别内乌维务]/u;
+for (const prov of PROVINCES) {
+  for (const name of [prov.name, ...prov.cities.map((c) => c.name)]) {
+    const labeled = labelRegion(name);
+    assert.ok(
+      !REGION_SIMPLIFIED.test(labeled),
+      `labelRegion(${JSON.stringify(name)}) still has simplified chars: ${labeled}`,
+    );
+  }
+}
+
+/** All star names from sampled charts → zh-Hant display (no common simplified leaks) */
+const STAR_SIMPLIFIED = /[厨诰虚]/u;
+const starNames = new Set<string>();
+for (let y = 1930; y <= 2026; y += 3) {
+  const c = generateChart({ year: y, month: 6, day: 15, hour: y % 12, gender: 'male' });
+  for (const p of c.palaces) for (const s of p.stars) starNames.add(s.name);
+}
+for (const name of starNames) {
+  const labeled = labelStar(name);
+  assert.ok(!STAR_SIMPLIFIED.test(labeled), `labelStar(${name}) => ${labeled}`);
+}
 
 console.log('display-zh-tw-keys.test.ts OK', {
   siHuas,
