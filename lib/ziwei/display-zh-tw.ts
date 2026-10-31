@@ -7,6 +7,7 @@
 
 import type { SiHua } from './types';
 import { simplifiedToTraditional } from '../zh/simplified-to-traditional';
+import { REGION_DISPLAY_LABEL } from '../zh/region-labels.generated';
 
 /** 四化：engine key → zh-TW label */
 export const SIHUA_LABEL: Record<SiHua, string> = {
@@ -162,7 +163,7 @@ export function labelStar(name: string): string {
 /** Province / city names in birth form (values stay zh-CN for lookup). */
 export function labelRegion(name: string): string {
   if (!name) return name;
-  return simplifiedToTraditional(name);
+  return REGION_DISPLAY_LABEL[name] ?? simplifiedToTraditional(name);
 }
 
 export function labelPalace(name: string): string {

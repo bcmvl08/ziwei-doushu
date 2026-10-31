@@ -16,6 +16,7 @@ import { searchClassics } from '../../lib/classics';
 import { traditionalToSimplified } from '../../lib/zh/traditional-to-simplified';
 import { buildSiHuaOverlay } from '../../components/TimeNav';
 import { PROVINCES } from '../../lib/ziwei/cities';
+import { REGION_DISPLAY_LABEL } from '../../lib/zh/region-labels.generated';
 
 const chart = generateChart({
   year: 1990,
@@ -110,15 +111,26 @@ assert.equal(labelRegion('云南省'), '雲南省');
 assert.equal(labelRegion('甘肃省'), '甘肅省');
 assert.equal(labelRegion('连云港'), '連雲港');
 assert.equal(labelRegion('密云'), '密雲');
+// QA city-level spot examples
+assert.equal(labelRegion('包头'), '包頭');
+assert.equal(labelRegion('桃园'), '桃園');
+assert.equal(labelRegion('锡林郭勒'), '錫林郭勒');
+assert.equal(labelRegion('丽江'), '麗江');
+assert.equal(labelRegion('白银'), '白銀');
+assert.equal(labelRegion('张掖'), '張掖');
+assert.equal(labelRegion('钦州'), '欽州');
+assert.equal(labelRegion('克拉玛依'), '克拉瑪依');
+assert.equal(labelRegion('路环'), '路環');
+assert.equal(labelRegion('花莲'), '花蓮');
 
-/** Simplified-only chars that must not appear in zh-Hant region labels */
-const REGION_SIMPLIFIED = /[厨诰虚壮云肃尔别内乌维务]/u;
+/** Every province + city in PROVINCES has a generated zh-Hant display label */
 for (const prov of PROVINCES) {
-  for (const name of [prov.name, ...prov.cities.map((c) => c.name)]) {
-    const labeled = labelRegion(name);
-    assert.ok(
-      !REGION_SIMPLIFIED.test(labeled),
-      `labelRegion(${JSON.stringify(name)}) still has simplified chars: ${labeled}`,
+  assert.equal(labelRegion(prov.name), REGION_DISPLAY_LABEL[prov.name], `province ${prov.name}`);
+  for (const city of prov.cities) {
+    assert.equal(
+      labelRegion(city.name),
+      REGION_DISPLAY_LABEL[city.name],
+      `city ${city.name}`,
     );
   }
 }
