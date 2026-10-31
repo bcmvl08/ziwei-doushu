@@ -1,0 +1,480 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T23:33:05+08:00",
+  "title": "Design System: 紫微斗數 · 水墨印璽",
+  "extensions": {
+    "colorMeta": {
+      "cinnabar": {
+        "role": "primary",
+        "displayName": "朱砂印泥 / Cinnabar Seal",
+        "canonical": "oklch(52.6% 0.161 29)",
+        "description": "Sole accent. CTA fill, selected chips, segment active, palace seal.",
+        "tonalRamp": [
+          "oklch(15% 0.14 29)",
+          "oklch(25% 0.14 29)",
+          "oklch(35% 0.14 29)",
+          "oklch(45% 0.14 29)",
+          "oklch(55% 0.14 29)",
+          "oklch(70% 0.14 29)",
+          "oklch(85% 0.14 29)",
+          "oklch(95% 0.14 29)"
+        ]
+      },
+      "cinnabar-deep": {
+        "role": "primary",
+        "displayName": "朱砂深 / Cinnabar Deep",
+        "canonical": "oklch(47.3% 0.149 29)",
+        "description": "CTA border, selected palace title, seal token alias.",
+        "tonalRamp": [
+          "oklch(15% 0.13 29)",
+          "oklch(25% 0.13 29)",
+          "oklch(35% 0.13 29)",
+          "oklch(45% 0.13 29)",
+          "oklch(55% 0.13 29)",
+          "oklch(70% 0.13 29)",
+          "oklch(85% 0.13 29)",
+          "oklch(95% 0.13 29)"
+        ]
+      },
+      "seal": {
+        "role": "primary",
+        "displayName": "印璽 / Seal",
+        "canonical": "oklch(47.3% 0.149 29)",
+        "description": "Alias of cinnabar-deep for seal impressions.",
+        "tonalRamp": [
+          "oklch(15% 0.13 29)",
+          "oklch(25% 0.13 29)",
+          "oklch(35% 0.13 29)",
+          "oklch(45% 0.13 29)",
+          "oklch(55% 0.13 29)",
+          "oklch(70% 0.13 29)",
+          "oklch(85% 0.13 29)",
+          "oklch(95% 0.13 29)"
+        ]
+      },
+      "cinnabar-soft": {
+        "role": "primary",
+        "displayName": "朱砂淡 / Cinnabar Soft",
+        "canonical": "rgba(181, 58, 46, 0.14)",
+        "description": "Wash behind chip-on, badge, sihua tags.",
+        "tonalRamp": [
+          "oklch(52.6% 0.161 29 / 0.35)",
+          "oklch(52.6% 0.161 29 / 0.28)",
+          "oklch(52.6% 0.161 29 / 0.22)",
+          "oklch(52.6% 0.161 29 / 0.18)",
+          "oklch(52.6% 0.161 29 / 0.14)",
+          "oklch(52.6% 0.161 29 / 0.10)",
+          "oklch(52.6% 0.161 29 / 0.06)",
+          "oklch(52.6% 0.161 29 / 0.03)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "宣紙 / Paper",
+        "canonical": "oklch(95.0% 0.016 86)",
+        "description": "Page wash and glass RGB base.",
+        "tonalRamp": [
+          "oklch(15% 0.016 86)",
+          "oklch(25% 0.016 86)",
+          "oklch(35% 0.016 86)",
+          "oklch(45% 0.016 86)",
+          "oklch(55% 0.016 86)",
+          "oklch(70% 0.016 86)",
+          "oklch(85% 0.016 86)",
+          "oklch(95% 0.016 86)"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "宣紙深 / Paper Deep",
+        "canonical": "oklch(90.9% 0.023 85)",
+        "description": "Shell mat ring and footer tint.",
+        "tonalRamp": [
+          "oklch(15% 0.022 85)",
+          "oklch(25% 0.022 85)",
+          "oklch(35% 0.022 85)",
+          "oklch(45% 0.022 85)",
+          "oklch(55% 0.022 85)",
+          "oklch(70% 0.022 85)",
+          "oklch(85% 0.022 85)",
+          "oklch(95% 0.022 85)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "松煙墨 / Pine-Soot Ink",
+        "canonical": "oklch(19.2% 0.008 85)",
+        "description": "Primary text and palace names.",
+        "tonalRamp": [
+          "oklch(15% 0.008 85)",
+          "oklch(25% 0.008 85)",
+          "oklch(35% 0.008 85)",
+          "oklch(45% 0.008 85)",
+          "oklch(55% 0.008 85)",
+          "oklch(70% 0.008 85)",
+          "oklch(85% 0.008 85)",
+          "oklch(95% 0.008 85)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "墨軟 / Ink Soft",
+        "canonical": "oklch(28.7% 0.012 78)",
+        "description": "Secondary body and idle chip text.",
+        "tonalRamp": [
+          "oklch(15% 0.012 78)",
+          "oklch(25% 0.012 78)",
+          "oklch(35% 0.012 78)",
+          "oklch(45% 0.012 78)",
+          "oklch(55% 0.012 78)",
+          "oklch(70% 0.012 78)",
+          "oklch(85% 0.012 78)",
+          "oklch(95% 0.012 78)"
+        ]
+      },
+      "ink-mute": {
+        "role": "neutral",
+        "displayName": "墨啞 / Ink Mute",
+        "canonical": "oklch(45.6% 0.018 81)",
+        "description": "Labels, meta, footer, placeholders.",
+        "tonalRamp": [
+          "oklch(15% 0.018 81)",
+          "oklch(25% 0.018 81)",
+          "oklch(35% 0.018 81)",
+          "oklch(45% 0.018 81)",
+          "oklch(55% 0.018 81)",
+          "oklch(70% 0.018 81)",
+          "oklch(85% 0.018 81)",
+          "oklch(95% 0.018 81)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "線 / Line",
+        "canonical": "oklch(27.1% 0.012 78)",
+        "description": "Underline fields, sheet edge, panel divider.",
+        "tonalRamp": [
+          "oklch(15% 0.012 78)",
+          "oklch(25% 0.012 78)",
+          "oklch(35% 0.012 78)",
+          "oklch(45% 0.012 78)",
+          "oklch(55% 0.012 78)",
+          "oklch(70% 0.012 78)",
+          "oklch(85% 0.012 78)",
+          "oklch(95% 0.012 78)"
+        ]
+      },
+      "frame-edge": {
+        "role": "neutral",
+        "displayName": "框緣 / Frame Edge",
+        "canonical": "oklch(27.9% 0.012 78)",
+        "description": "Mock shell outer stroke.",
+        "tonalRamp": [
+          "oklch(15% 0.012 78)",
+          "oklch(25% 0.012 78)",
+          "oklch(35% 0.012 78)",
+          "oklch(45% 0.012 78)",
+          "oklch(55% 0.012 78)",
+          "oklch(70% 0.012 78)",
+          "oklch(85% 0.012 78)",
+          "oklch(95% 0.012 78)"
+        ]
+      },
+      "wash": {
+        "role": "neutral",
+        "displayName": "渲 / Wash",
+        "canonical": "rgba(40, 36, 30, 0.06)",
+        "description": "Subtle atmosphere wash.",
+        "tonalRamp": [
+          "rgba(40, 36, 30, 0.18)",
+          "rgba(40, 36, 30, 0.14)",
+          "rgba(40, 36, 30, 0.10)",
+          "rgba(40, 36, 30, 0.08)",
+          "rgba(40, 36, 30, 0.06)",
+          "rgba(40, 36, 30, 0.04)",
+          "rgba(40, 36, 30, 0.02)",
+          "rgba(40, 36, 30, 0.01)"
+        ]
+      },
+      "glass": {
+        "role": "neutral",
+        "displayName": "宣紙半透 / Glass",
+        "canonical": "rgba(243, 238, 227, 0.54)",
+        "description": "Default translucent rice-paper card.",
+        "tonalRamp": [
+          "rgba(243, 238, 227, 0.36)",
+          "rgba(243, 238, 227, 0.42)",
+          "rgba(243, 238, 227, 0.46)",
+          "rgba(243, 238, 227, 0.54)",
+          "rgba(243, 238, 227, 0.58)",
+          "rgba(243, 238, 227, 0.64)",
+          "rgba(243, 238, 227, 0.72)",
+          "rgba(243, 238, 227, 0.82)"
+        ]
+      },
+      "glass-soft": {
+        "role": "neutral",
+        "displayName": "宣紙半透軟 / Glass Soft",
+        "canonical": "rgba(243, 238, 227, 0.46)",
+        "description": "Side column and idle palace cells.",
+        "tonalRamp": [
+          "rgba(243, 238, 227, 0.30)",
+          "rgba(243, 238, 227, 0.36)",
+          "rgba(243, 238, 227, 0.42)",
+          "rgba(243, 238, 227, 0.46)",
+          "rgba(243, 238, 227, 0.52)",
+          "rgba(243, 238, 227, 0.58)",
+          "rgba(243, 238, 227, 0.64)",
+          "rgba(243, 238, 227, 0.72)"
+        ]
+      },
+      "glass-strong": {
+        "role": "neutral",
+        "displayName": "宣紙半透濃 / Glass Strong",
+        "canonical": "rgba(243, 238, 227, 0.64)",
+        "description": "Sheet and panel surfaces.",
+        "tonalRamp": [
+          "rgba(243, 238, 227, 0.46)",
+          "rgba(243, 238, 227, 0.52)",
+          "rgba(243, 238, 227, 0.58)",
+          "rgba(243, 238, 227, 0.64)",
+          "rgba(243, 238, 227, 0.70)",
+          "rgba(243, 238, 227, 0.76)",
+          "rgba(243, 238, 227, 0.82)",
+          "rgba(243, 238, 227, 0.90)"
+        ]
+      },
+      "glass-text": {
+        "role": "neutral",
+        "displayName": "字下紙帶 / Glass Text",
+        "canonical": "rgba(255, 252, 246, 0.55)",
+        "description": "Denser strip behind text rows only.",
+        "tonalRamp": [
+          "rgba(255, 252, 246, 0.30)",
+          "rgba(255, 252, 246, 0.38)",
+          "rgba(255, 252, 246, 0.45)",
+          "rgba(255, 252, 246, 0.55)",
+          "rgba(255, 252, 246, 0.62)",
+          "rgba(255, 252, 246, 0.70)",
+          "rgba(255, 252, 246, 0.80)",
+          "rgba(255, 252, 246, 0.90)"
+        ]
+      },
+      "cta-text": {
+        "role": "neutral",
+        "displayName": "印上紙白 / CTA Text",
+        "canonical": "oklch(96.5% 0.012 86)",
+        "description": "Text on cinnabar CTA only.",
+        "tonalRamp": [
+          "oklch(70% 0.012 86)",
+          "oklch(78% 0.012 86)",
+          "oklch(85% 0.012 86)",
+          "oklch(90% 0.012 86)",
+          "oklch(93% 0.012 86)",
+          "oklch(95% 0.012 86)",
+          "oklch(97% 0.012 86)",
+          "oklch(99% 0.012 86)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "title": {
+        "displayName": "Title",
+        "purpose": "Header / topbar product title (15px mobile)."
+      },
+      "title-desktop": {
+        "displayName": "Title Desktop",
+        "purpose": "Topbar title at 17px / tracking 0.16em."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Sheet / panel palace title."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Field values and primary reading text."
+      },
+      "body-soft": {
+        "displayName": "Body Soft",
+        "purpose": "Side column and supporting copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels above underline inputs."
+      },
+      "label-micro": {
+        "displayName": "Label Micro",
+        "purpose": "Status, badges, footer, meta — polish backlog if <11px."
+      },
+      "palace-name": {
+        "displayName": "Palace Name",
+        "purpose": "Twelve-palace cell titles."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-text",
+        "value": "0 1px 0 rgba(255, 252, 246, 0.55)",
+        "purpose": "Hairline paper edge under titles and dense rows on art."
+      },
+      {
+        "name": "shell-mat-mobile",
+        "value": "0 0 0 6px #e8e0d0, 0 12px 40px rgba(28, 26, 23, 0.12)",
+        "purpose": "Mock .frame only — secondary shell chrome, not content elevation."
+      },
+      {
+        "name": "shell-mat-desktop",
+        "value": "0 0 0 8px #e8e0d0, 0 16px 48px rgba(28, 26, 23, 0.1)",
+        "purpose": "Mock .shell only — secondary shell chrome."
+      },
+      {
+        "name": "cta-foot",
+        "value": "0 2px 0 rgba(110, 30, 22, 0.35)",
+        "purpose": "Seal stamp weight under primary CTA."
+      },
+      {
+        "name": "sheet-lift",
+        "value": "0 -10px 36px rgba(28, 26, 23, 0.12)",
+        "purpose": "Bottom sheet lift only."
+      },
+      {
+        "name": "palace-seal-inset",
+        "value": "inset 0 0 0 1px #b53a2e, 0 0 0 1px rgba(181, 58, 46, 0.2)",
+        "purpose": "Selected palace seal ring — selection, not elevation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "reduced-motion",
+        "value": "animation: none !important; transition: none !important",
+        "purpose": "prefers-reduced-motion: reduce kills all animation/transition."
+      },
+      {
+        "name": "default",
+        "value": "none (static hi-fi mock)",
+        "purpose": "Incumbent mock has no timed transitions; keep quiet if adding any."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "mobile-frame",
+        "value": "390px",
+        "purpose": "Hi-fi mobile device frame width (.frame)."
+      },
+      {
+        "name": "desktop-shell",
+        "value": "1280px",
+        "purpose": "Hi-fi desktop shell width (.shell)."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary CTA",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "朱砂印泥 primary action — 起盤 / commit; sole filled cinnabar control.",
+      "html": "<button type=\"button\" class=\"ds-cta\">起　盤</button>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 0 16px; min-width: 180px; border: 1px solid #9e2f24; background: #b53a2e; color: #f7f2ea; font-family: system-ui, -apple-system, \"Segoe UI\", \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", \"Songti TC\", serif; font-size: 15px; font-weight: 600; letter-spacing: 0.32em; border-radius: 0; box-shadow: 0 2px 0 rgba(110, 30, 22, 0.35); cursor: pointer; } .ds-cta:hover { background: #9e2f24; } .ds-cta:focus-visible { outline: 2px solid #b53a2e; outline-offset: 3px; } .ds-cta:active { box-shadow: 0 1px 0 rgba(110, 30, 22, 0.35); transform: translateY(1px); }"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Idle calendar / gender chip on rice-paper wash.",
+      "html": "<button type=\"button\" class=\"ds-chip\">農曆</button>",
+      "css": ".ds-chip { font-family: system-ui, -apple-system, \"Segoe UI\", \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", \"Songti TC\", serif; font-size: 12px; letter-spacing: 0.08em; padding: 7px 12px; border: 1px solid rgba(42,38,32,0.28); background: rgba(255,255,255,0.28); color: #2e2a24; border-radius: 0; cursor: pointer; } .ds-chip:hover { border-color: rgba(42,38,32,0.45); } .ds-chip:focus-visible { outline: 2px solid #5c564c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Chip On",
+      "kind": "chip",
+      "refersTo": "chip-on",
+      "description": "Selected chip — cinnabar border/text on soft seal wash.",
+      "html": "<button type=\"button\" class=\"ds-chip-on\" aria-pressed=\"true\">陽曆</button>",
+      "css": ".ds-chip-on { font-family: system-ui, -apple-system, \"Segoe UI\", \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", \"Songti TC\", serif; font-size: 12px; letter-spacing: 0.08em; padding: 7px 12px; font-weight: 600; border: 1px solid #b53a2e; background: rgba(181, 58, 46, 0.14); color: #b53a2e; border-radius: 0; cursor: pointer; } .ds-chip-on:hover { background: rgba(181, 58, 46, 0.2); } .ds-chip-on:focus-visible { outline: 2px solid #b53a2e; outline-offset: 2px; }"
+    },
+    {
+      "name": "Glass Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Translucent rice-paper card over full-bleed ink; no drop shadow.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-label\">生辰</div><div class=\"ds-card-body\">輸入曆法與時辰後起盤</div></div>",
+      "css": ".ds-card { background: rgba(243, 238, 227, 0.54); border: 1px solid rgba(42, 38, 32, 0.16); padding: 14px 14px 16px; border-radius: 0; color: #161410; font-family: system-ui, -apple-system, \"Segoe UI\", \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", \"Songti TC\", serif; } .ds-card-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; color: #5c564c; margin-bottom: 8px; } .ds-card-body { font-size: 14px; letter-spacing: 0.04em; line-height: 1.45; }"
+    },
+    {
+      "name": "Underline Field",
+      "kind": "input",
+      "refersTo": "input-box",
+      "description": "Underline input box — no full outline; paper wash fill.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">出生日期</span><span class=\"ds-field-box\" contenteditable=\"false\">1990-01-15</span></label>",
+      "css": ".ds-field { display: block; font-family: system-ui, -apple-system, \"Segoe UI\", \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", \"Songti TC\", serif; } .ds-field-label { display: block; font-size: 11px; font-weight: 500; color: #5c564c; margin-bottom: 5px; letter-spacing: 0.1em; } .ds-field-box { display: flex; align-items: center; height: 40px; padding: 0 10px; border: none; border-bottom: 1.5px solid #2a2620; background: rgba(255, 255, 255, 0.32); font-size: 14px; font-weight: 500; color: #161410; letter-spacing: 0.04em; border-radius: 0; } .ds-field-box:focus, .ds-field-box:focus-visible { outline: none; border-bottom-color: #b53a2e; }"
+    },
+    {
+      "name": "Palace Cell",
+      "kind": "custom",
+      "refersTo": "palace",
+      "description": "Idle palace cell on glass-soft — quiet corner mark, no seal fill.",
+      "html": "<div class=\"ds-palace\" role=\"button\" tabindex=\"0\"><div class=\"ds-palace-name\">命宮</div><div class=\"ds-palace-meta\">甲子 · 寅</div><div class=\"ds-palace-stars\">紫微 天府</div></div>",
+      "css": ".ds-palace { position: relative; background: rgba(243, 238, 227, 0.46); border: 1px solid rgba(42, 38, 32, 0.55); min-height: 72px; padding: 9px 9px 10px; border-radius: 0; cursor: pointer; font-family: system-ui, -apple-system, \"Segoe UI\", \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", \"Songti TC\", serif; } .ds-palace::after { content: \"\"; position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; border: 1px solid rgba(181, 58, 46, 0.35); opacity: 0.5; } .ds-palace-name { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #161410; margin-bottom: 4px; text-shadow: 0 1px 0 rgba(255, 252, 246, 0.55); } .ds-palace-meta { font-size: 9px; color: #5c564c; letter-spacing: 0.06em; margin-bottom: 3px; } .ds-palace-stars { font-size: 11px; color: #2e2a24; line-height: 1.4; letter-spacing: 0.02em; } .ds-palace:hover { border-color: rgba(42, 38, 32, 0.75); } .ds-palace:focus-visible { outline: 2px solid #5c564c; outline-offset: 2px; }"
+    },
+    {
+      "name": "Palace Selected Seal",
+      "kind": "custom",
+      "refersTo": "palace-sel",
+      "description": "Selected palace — 克制印璽 cinnabar seal square and inset ring.",
+      "html": "<div class=\"ds-palace-sel\" role=\"button\" tabindex=\"0\" aria-pressed=\"true\"><div class=\"ds-palace-sel-name\">官祿</div><div class=\"ds-palace-sel-meta\">乙丑 · 午</div><div class=\"ds-palace-sel-stars\">武曲 七殺</div></div>",
+      "css": ".ds-palace-sel { position: relative; background: rgba(181, 58, 46, 0.13); border: 1px solid #b53a2e; min-height: 72px; padding: 9px 9px 10px; border-radius: 0; cursor: pointer; box-shadow: inset 0 0 0 1px #b53a2e, 0 0 0 1px rgba(181, 58, 46, 0.2); font-family: system-ui, -apple-system, \"Segoe UI\", \"PingFang TC\", \"Noto Sans TC\", \"Microsoft JhengHei\", \"Songti TC\", serif; } .ds-palace-sel::after { content: \"\"; position: absolute; top: 5px; right: 5px; width: 11px; height: 11px; background: #b53a2e; border: none; opacity: 0.92; box-shadow: inset 0 0 0 1.5px rgba(255, 240, 230, 0.35); } .ds-palace-sel-name { font-size: 12px; font-weight: 700; letter-spacing: 0.18em; color: #9e2f24; margin-bottom: 4px; text-shadow: 0 1px 0 rgba(255, 252, 246, 0.55); } .ds-palace-sel-meta { font-size: 9px; color: #5c564c; letter-spacing: 0.06em; margin-bottom: 3px; } .ds-palace-sel-stars { font-size: 11px; color: #2e2a24; line-height: 1.4; letter-spacing: 0.02em; } .ds-palace-sel:focus-visible { outline: 2px solid #b53a2e; outline-offset: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "「印璽＋滿壁水墨書房」 (north-seal-study)",
+    "overview": "This is a personal Operate tool for casting and reading a Ziwei natal chart — not a SaaS landing page. The room is a study whose entire wall is ink wash; the UI is translucent rice paper laid over that art, never the other way around. Cinnabar appears only as a seal impression: sparse CTAs and selection marks. Everywhere else, ink and paper do the work.\n\nPersonality is restrained, dense where the chart needs density, and quiet at the chrome. Anti-references: no light Material card shadows as the primary depth language, no rounded consumer-app chrome, no login / share / pay affordances, no web-font CDN personality. Future polish may lift undersized 9–10px micro labels; that is backlog, not a redesign.",
+    "keyCharacteristics": [
+      "Full-bleed ink art (`.art-bleed`) owns the viewport; UI floats on 宣紙半透 glass",
+      "朱砂印泥 only for CTA and seal-like selection — rarity is the brand",
+      "Depth by 叠紙 (stacked paper / glass opacity), not heavy drop shadows",
+      "Sharp corners; system CJK/UI stack only; `prefers-reduced-motion: reduce` kills motion",
+      "Operate mode: form → twelve palaces → sheet/panel detail; mobile-first frames at 390 / 1280"
+    ],
+    "rules": [
+      {
+        "name": "The Cinnabar Rarity Rule（朱砂稀用）",
+        "body": "朱砂 appears only as sparse CTA fill and selection/seal marks. Never flood backgrounds, never decorate idle chrome, never tint the full-bleed art.",
+        "section": "colors"
+      },
+      {
+        "name": "The Full-Bleed Art Rule（滿壁水墨）",
+        "body": ".art-bleed is `position: absolute; inset: 0` under all chrome. Do not thin, crop to a hero strip, or replace with solid/ornament-only backgrounds.",
+        "section": "colors"
+      },
+      {
+        "name": "The System Font Rule（系統字體）",
+        "body": "No Google Fonts, no CDN type, no custom `@font-face` for brand. The `--font` stack is normative.",
+        "section": "typography"
+      },
+      {
+        "name": "The Layered Paper Rule（叠紙）",
+        "body": "Convey depth with glass stacks and borders. Heavy drop shadows on cards/palaces are out of brand; shell shadows stay shell-only.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep `.art-bleed` full-bleed under every screen (Full-Bleed Art Rule).",
+      "Do put 朱砂 only on CTA and selection seals (Cinnabar Rarity Rule).",
+      "Do stack `--glass*` opacities for depth (Layered Paper Rule / 叠紙).",
+      "Do use the system `--font` stack exclusively (System Font Rule).",
+      "Do keep corners sharp; reserve 2px radius for the sheet handle only.",
+      "Do respect `prefers-reduced-motion: reduce` (no animation/transition).",
+      "Do ship footer attribution / personal-use / non-commercial lines as part of the visual system."
+    ],
+    "donts": [
+      "Don't add login, share, or pay chrome — visual identity is a private Operate tool, not a funnel.",
+      "Don't replace full-bleed ink with solid fills, thin hero strips, or ornament-only corners.",
+      "Don't paint large surfaces in cinnabar or use red as a general brand wash.",
+      "Don't apply Material-style card drop shadows as the default elevation language.",
+      "Don't load webfonts or icon-font CDNs.",
+      "Don't round chips, cards, palaces, or CTAs into soft-UI pills.",
+      "Don't treat 9–10px micro labels as intentional forever — note as polish backlog (lift toward readable ≥11px) without rewriting tokens in this pass."
+    ]
+  }
+}
