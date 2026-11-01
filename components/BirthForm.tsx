@@ -5,6 +5,7 @@ import type { BirthInfo } from '@/lib/ziwei/types';
 import { SHICHEN } from '@/lib/ziwei/constants';
 import { useTheme } from '@/components/ThemeProvider';
 import { PROVINCES } from '@/lib/ziwei/cities';
+import { labelRegion } from '@/lib/ziwei/display-zh-tw';
 
 export interface BirthFormState {
   name: string;
@@ -27,6 +28,8 @@ interface BirthFormProps {
   onFormSave?: (data: BirthFormState) => void;
   /** 隱藏內部「立即起盤」按鈕（合盤等場景由父級統一觸發） */
   hideSubmit?: boolean;
+  /** Layout A 水墨印璽 — 宣紙 underline 表單 */
+  variant?: 'default' | 'ink';
 }
 
 const SHICHEN_NAMES = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥'];
@@ -47,7 +50,7 @@ function isValidDate(y: number, m: number, d: number): boolean {
   return date.getFullYear() === y && date.getMonth() === m - 1 && date.getDate() === d;
 }
 
-export default function BirthForm({ onSubmit, loading, initialData, onFormSave, hideSubmit }: BirthFormProps) {
+export default function BirthForm({ onSubmit, loading, initialData, onFormSave, hideSubmit, variant = 'default' }: BirthFormProps) {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
@@ -121,7 +124,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
   const summaryText = showSummary
     ? [
         `${y}年${m}月${d}日`,
-        form.city || (form.province ? form.province : ''),
+        labelRegion(form.city) || (form.province ? labelRegion(form.province) : ''),
         form.unknownTime ? '時辰不詳' : `${SHICHEN_NAMES[branch]}時`,
         form.gender === 'male' ? '男' : '女',
       ].filter(Boolean).join(' · ')
@@ -199,6 +202,154 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
   }
 
   const showErr = (field: string) => touched[field] || submitAttempted;
+
+  if (variant === 'ink') {
+    return (
+      <form className="ink-birth-form" onSubmit={handleSubmit}>
+        <div className="constraint">約束：無登入／無分享／無付費／無 AI 斷語 UI</div>
+
+        <div className="field">
+          <label htmlFor="ink-name">姓名（可選）</label>
+          <input
+            id="ink-name"
+            type="text"
+            placeholder="可不填"
+            value={form.name}
+            onChange={e => setForm({ ...form, name: e.target.value })}
+          />
+        </div>
+
+        <div className="field">
+          <label>出生日期（陽曆）</label>
+          <div className="row2">
+            <div className="field">
+              <select
+                aria-label="年"
+                value={form.year}
+                onChange={e => { setForm({ ...form, year: e.target.value }); setTouched(t => ({ ...t, year: true })); }}
+                required
+              >
+                <option value="">年</option>
+                {Array.from({ length: 127 }, (_, i) => 2026 - i).map(yr => (
+                  <option key={yr} value={String(yr)}>{yr}</option>
+                ))}
+              </select>
+              <FieldError msg={showErr('year') ? errors.year : ''} />
+            </div>
+            <div className="field">
+              <select
+                aria-label="月"
+                value={form.month}
+                onChange={e => { setForm({ ...form, month: e.target.value }); setTouched(t => ({ ...t, month: true })); }}
+                required
+              >
+                <option value="">月</option>
+                {Array.from({ length: 12 }, (_, i) => i + 1).map(mo => (
+                  <option key={mo} value={String(mo)}>{mo} 月</option>
+                ))}
+              </select>
+              <FieldError msg={showErr('month') ? errors.month : ''} />
+            </div>
+            <div className="field">
+              <select
+                aria-label="日"
+                value={form.day}
+                onChange={e => { setForm({ ...form, day: e.target.value }); setTouched(t => ({ ...t, day: true })); }}
+                required
+              >
+                <option value="">日</option>
+                {Array.from({ length: 31 }, (_, i) => i + 1).map(dy => (
+                  <option key={dy} value={String(dy)}>{dy} 日</option>
+                ))}
+              </select>
+              <FieldError msg={showErr('day') ? errors.day : ''} />
+            </div>
+          </div>
+        </div>
+
+        <div className="field">
+          <label>出生地（真太陽時）</label>
+          <div className="row2">
+            <select value={form.province} onChange={e => handleProvince(e.target.value)} aria-label="省份">
+              <option value="">省份</option>
+              {PROVINCES.map(p => (
+                <option key={p.name} value={p.name}>{labelRegion(p.name)}</option>
+              ))}
+            </select>
+            <select
+              value={form.city}
+              onChange={e => handleCity(e.target.value)}
+              disabled={!form.province}
+              aria-label="城市"
+            >
+              <option value="">{form.province ? '城市' : '先選省'}</option>
+              {cityList.map(c => (
+                <option key={c.name} value={c.name}>{labelRegion(c.name)}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="field">
+          <label>出生時間（北京時間）</label>
+          <div className="row2" style={{ opacity: form.unknownTime ? 0.45 : 1 }}>
+            <select value={form.clockHour} onChange={e => setForm({ ...form, clockHour: e.target.value })} disabled={form.unknownTime}>
+              {Array.from({ length: 24 }, (_, i) => i).map(h => (
+                <option key={h} value={String(h)}>{h.toString().padStart(2, '0')} 時</option>
+              ))}
+            </select>
+            <select value={form.clockMinute} onChange={e => setForm({ ...form, clockMinute: e.target.value })} disabled={form.unknownTime}>
+              {Array.from({ length: 60 }, (_, i) => i).map(min => (
+                <option key={min} value={String(min)}>{min.toString().padStart(2, '0')} 分</option>
+              ))}
+            </select>
+          </div>
+          <div className="note">
+            真太陽時 → <strong>{SHICHEN_NAMES[branch]}時</strong>
+            {shichenInfo ? `（${shichenInfo.range}）` : ''}
+          </div>
+          <label className="check-row">
+            <span className="check-box" aria-hidden="true" />
+            <input
+              type="checkbox"
+              checked={form.unknownTime}
+              onChange={e => setForm({ ...form, unknownTime: e.target.checked })}
+              style={{ position: 'absolute', opacity: 0, width: 1, height: 1 }}
+            />
+            時辰不詳，以子時起盤
+          </label>
+        </div>
+
+        <div className="field">
+          <label>性別</label>
+          <div className="chips">
+            {(['male', 'female'] as const).map(g => (
+              <button
+                key={g}
+                type="button"
+                className={`chip${form.gender === g ? ' on' : ''}`}
+                onClick={() => setForm({ ...form, gender: g })}
+              >
+                {g === 'male' ? '男' : '女'}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {showSummary && (
+          <div className="note" style={{ marginTop: 8 }}>
+            <strong>已填</strong> · {summaryText}
+          </div>
+        )}
+
+        {!hideSubmit && (
+          <button type="submit" className="cta" disabled={loading} style={{ width: '100%', cursor: loading ? 'wait' : 'pointer' }}>
+            {loading ? '起盤中…' : '起　盤'}
+          </button>
+        )}
+      </form>
+    );
+  }
 
   return (
     <motion.form
@@ -301,7 +452,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
           >
             <option value="">省份 / 直轄市</option>
             {PROVINCES.map(p => (
-              <option key={p.name} value={p.name}>{p.name}</option>
+              <option key={p.name} value={p.name}>{labelRegion(p.name)}</option>
             ))}
           </select>
           <select
@@ -314,7 +465,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
           >
             <option value="">{form.province ? '城市' : '先選省份'}</option>
             {cityList.map(c => (
-              <option key={c.name} value={c.name}>{c.name}</option>
+              <option key={c.name} value={c.name}>{labelRegion(c.name)}</option>
             ))}
           </select>
         </div>
@@ -327,7 +478,7 @@ export default function BirthForm({ onSubmit, loading, initialData, onFormSave, 
               exit={{ opacity: 0 }}
               style={{ fontSize: '10px', color: isDark ? 'rgba(180,210,235,0.85)' : 'rgba(100,70,10,0.5)', marginTop: '5px' }}
             >
-              {form.city || '（請選擇城市）'} · 經度 {form.longitude.toFixed(1)}°E · 時差 {offsetMin > 0 ? '+' : ''}{offsetMin} 分鐘
+              {labelRegion(form.city) || '（請選擇城市）'} · 經度 {form.longitude.toFixed(1)}°E · 時差 {offsetMin > 0 ? '+' : ''}{offsetMin} 分鐘
             </motion.p>
           ) : (
             <motion.p

@@ -126,7 +126,58 @@ const TW_TO_CN: Record<string, string> = {
   緯: '纬',
   導: '导',
   畫: '画',
+  // stars / aux (engine zh-CN tokens)
+  龍: '龙',
+  鳳: '凤',
+  蓋: '盖',
+  將: '将',
+  驛: '驿',
+  喪: '丧',
+  貫: '贯',
+  飛: '飞',
+  臺: '台',
+  灣: '湾',
+  島: '岛',
+  連: '连',
+  濱: '滨',
+  遼: '辽',
+  陝: '陕',
+  齊: '齐',
+  粵: '粤',
+  贛: '赣',
+  閩: '闽',
+  滬: '沪',
+  蘇: '苏',
+  魯: '鲁',
+  瓊: '琼',
+  隴: '陇',
+  靈: '灵',
+  執: '执',
+  慶: '庆',
+  // stars (杂曜 / 流年神等 engine 用字)
+  廚: '厨',
+  誥: '诰',
+  虛: '虚',
+  // 行政區劃 / 地名常用简繁
+  雲: '云',
+  壯: '壮',
+  肅: '肃',
+  爾: '尔',
+  別: '别',
+  內: '内',
+  烏: '乌',
+  維: '维',
+  務: '务',
+  倫: '伦',
+  貝: '贝',
+  彥: '彦',
+  庫: '库',
+  蘭: '兰',
+  專: '专',
 };
+
+/** For building CN→TW display maps (do not use for engine keys). */
+export const TW_TO_CN_ENTRIES = Object.entries(TW_TO_CN) as ReadonlyArray<readonly [string, string]>;
 
 /** Convert Traditional Chinese query text to Simplified for corpus match. */
 export function traditionalToSimplified(input: string): string {
