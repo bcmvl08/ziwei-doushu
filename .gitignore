@@ -14,3 +14,4 @@ agent-tools/
 
 # Wrangler local state
 .wrangler/
+.dev.vars

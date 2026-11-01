@@ -70,7 +70,7 @@ npm run upload
 | `wrangler.jsonc` | Worker name `ziwei-doushu`, entry `.open-next/worker.js`, static assets `.open-next/assets`, `nodejs_compat` + `global_fetch_strictly_public` |
 | `open-next.config.ts` | OpenNext Cloudflare adapter config |
 | `public/_headers` | Long-cache headers for `/_next/static/*` |
-| `.dev.vars` | `NEXTJS_ENV=development` for local Wrangler/preview env loading |
+| `.dev.vars.example` | Copy to `.dev.vars` (gitignored) for local Wrangler/preview env loading |
 
 ## Regenerating generated sources
 
