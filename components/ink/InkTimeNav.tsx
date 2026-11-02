@@ -28,14 +28,13 @@ export default function InkTimeNav({
 
   return (
     <>
-      <div className="seg" role="tablist" aria-label="時間軸">
+      <div className="seg ink-seg" role="tablist" aria-label="時間軸">
         <button
           type="button"
           role="tab"
           aria-selected={view === 'mingpan'}
           className={view === 'mingpan' ? 'active' : undefined}
           onClick={() => onViewChange('mingpan')}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
         >
           本命
         </button>
@@ -45,7 +44,6 @@ export default function InkTimeNav({
           aria-selected={view === 'daxian'}
           className={view === 'daxian' ? 'active' : undefined}
           onClick={() => onViewChange('daxian')}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
         >
           {currentDx ? `大限 ${currentDx.startAge}–${currentDx.endAge}` : '大限'}
         </button>
@@ -55,13 +53,12 @@ export default function InkTimeNav({
           aria-selected={view === 'liunian'}
           className={view === 'liunian' ? 'active' : undefined}
           onClick={() => onViewChange('liunian')}
-          style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit' }}
         >
           流年
         </button>
       </div>
       {view === 'liunian' && (
-        <div className="toolbar" style={{ justifyContent: 'center' }}>
+        <div className="toolbar ink-liunian-toolbar">
           <button
             type="button"
             className="back"
@@ -70,7 +67,7 @@ export default function InkTimeNav({
           >
             ◀
           </button>
-          <span style={{ fontSize: 13, letterSpacing: '0.12em', color: 'var(--ink-soft)' }}>
+          <span className="ink-liunian-label">
             {liunianYear} 年 · {STEMS[getYearStemIndex(liunianYear)]}干
           </span>
           <button
@@ -84,7 +81,7 @@ export default function InkTimeNav({
         </div>
       )}
       {view !== 'mingpan' && (
-        <div className="empty" style={{ marginTop: 0 }}>
+        <div className="empty empty-overlay-hint">
           {view === 'daxian' && currentDx
             ? `大限四化依 ${STEMS[chart.palaces.find(p => p.branch === currentDx.palaceBranch)?.stem ?? 0]} 干`
             : view === 'liunian'

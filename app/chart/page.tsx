@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
 import BirthForm from '@/components/BirthForm';
 import InkLayout from '@/components/ink/InkLayout';
 import InkTimeNav from '@/components/ink/InkTimeNav';
@@ -33,7 +34,7 @@ export default function ChartPage() {
     return (
       <InkLayout title="紫微斗數 · 起盤">
         <main className="body birth-desktop">
-          <div className="card form-col">
+          <div className="form-col">
             <BirthForm variant="ink" onSubmit={(info: BirthInfo) => setChart(generateChart(info))} />
           </div>
           <aside className="side-col" aria-label="說明">
@@ -44,7 +45,7 @@ export default function ChartPage() {
             <div className="flow-box">入參 → 十二宮 → 點宮詳情</div>
             <p style={{ marginTop: 16, fontSize: 12 }}>
               上游引擎 MIT ·{' '}
-              <Link href="https://github.com/Renhuai123/ziwei-doushu" style={{ color: 'var(--cinnabar-deep)' }}>
+              <Link href="https://github.com/Renhuai123/ziwei-doushu" className="ink-link-cinnabar">
                 Renhuai123/ziwei-doushu
               </Link>
             </p>
@@ -57,6 +58,8 @@ export default function ChartPage() {
   return (
     <InkLayout
       title="本命盤"
+      chrome="topbar"
+      headerNote={<span className="constraint inline">引擎 Demo · 無 AI 斷語</span>}
       topBarExtra={
         <button type="button" className="back" onClick={resetChart}>
           重起
@@ -71,20 +74,17 @@ export default function ChartPage() {
         onYearChange={setLiunianYear}
       />
 
-      <div className="chart-layout">
-        <div className={`board-wrap${selectedBranch !== null ? ' main' : ''}`} style={{ padding: '0 14px 16px', flex: 1 }}>
-          <main className="body" style={{ paddingTop: 8, paddingBottom: 8 }}>
-            <div className="constraint inline">引擎 Demo · 無 AI 斷語</div>
-            <InkChartMeta chart={chart} />
-            <div className="empty">有盤 · 點宮看星曜列（無斷語文案）</div>
-            <InkChartGrid
-              chart={chart}
-              view={view}
-              liunianYear={liunianYear}
-              selectedBranch={selectedBranch}
-              onSelectBranch={setSelectedBranch}
-            />
-          </main>
+      <div className={clsx('chart-layout', selectedBranch !== null && 'has-panel')}>
+        <div className="board-wrap">
+          <InkChartMeta chart={chart} />
+          <p className="empty empty-chart-hint">有盤 · 點宮看星曜列（無斷語文案）</p>
+          <InkChartGrid
+            chart={chart}
+            view={view}
+            liunianYear={liunianYear}
+            selectedBranch={selectedBranch}
+            onSelectBranch={setSelectedBranch}
+          />
         </div>
 
         <div className="ink-palace-desktop-only">

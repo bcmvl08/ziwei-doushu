@@ -90,7 +90,7 @@ export default function InkChartGrid({
             </div>
             <div className="stars">{starLine(palace)}</div>
             {(natalSihua.length > 0 || Object.keys(overlayData).length > 0) && (
-              <div className="tags" style={{ marginTop: 4, display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+              <div className="tags palace-tags">
                 {natalSihua.map(s => (
                   <span key={s.name} className="tag sihua">
                     {labelStar(s.name)}{labelSiHua(s.siHua!)}

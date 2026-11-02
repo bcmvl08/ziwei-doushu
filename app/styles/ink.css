@@ -92,7 +92,8 @@
   pointer-events: none;
   overflow: hidden;
 }
-.art-bleed svg {
+.art-bleed svg,
+.art-bleed-layer {
   display: block;
   width: 100%;
   height: 100%;
@@ -633,21 +634,6 @@
     min-height: 0;
   }
 }
-.ink-app .seg button {
-  flex: 1;
-  text-align: center;
-  padding: 9px 4px;
-  font-size: 13px;
-  color: var(--ink-mute);
-  letter-spacing: 0.14em;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-}
-.ink-app .seg button.active {
-  color: var(--cinnabar);
-  font-weight: 600;
-  border-bottom-color: var(--cinnabar);
-}
 .ink-app .ink-birth-form select,
 .ink-app .ink-birth-form input[type="text"] {
   width: 100%;
@@ -671,4 +657,196 @@
 @media (min-width: 1024px) {
   .ink-palace-mobile-only { display: none; }
   .ink-palace-desktop-only { display: flex; }
+}
+
+/* —— Hi-fi polish (ziwei-hifi-ink authority) —— */
+.art-bleed-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.art-bleed-layer--desktop { display: none; }
+@media (min-width: 1024px) {
+  .art-bleed-layer--mobile { display: none; }
+  .art-bleed-layer--desktop { display: block; }
+}
+
+.ink-inner-frame {
+  position: relative;
+}
+.ink-inner-frame::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  inset: 8px;
+  border: 1px solid rgba(42, 38, 32, 0.14);
+}
+@media (min-width: 1024px) {
+  .ink-inner-frame::before { inset: 10px; }
+}
+
+.ink-header-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.ink-link-cinnabar {
+  color: var(--cinnabar-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.status {
+  font-size: 11px;
+}
+.badge-demo {
+  font-size: 11px;
+}
+.footer-strip {
+  font-size: 11px;
+}
+.footer-mini {
+  font-size: 10px;
+}
+.tag {
+  font-size: 10px;
+}
+.section-label {
+  font-size: 11px;
+}
+.sheet-head .palace-meta,
+.panel-head .palace-meta {
+  font-size: 11px;
+}
+
+.ink-app button.palace {
+  appearance: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font);
+  border-radius: 0;
+}
+.ink-app button.chip {
+  cursor: pointer;
+  font-family: var(--font);
+  border-radius: 0;
+}
+.ink-app .cta {
+  width: 100%;
+  cursor: pointer;
+  font-family: var(--font);
+  border-radius: 0;
+}
+.ink-app .cta:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+.ink-app .back {
+  cursor: pointer;
+  font-family: var(--font);
+  border-radius: 0;
+}
+
+.ink-app .seg button,
+.ink-app .ink-seg button {
+  flex: 1;
+  text-align: center;
+  padding: 9px 4px;
+  font-size: 13px;
+  color: var(--ink-mute);
+  letter-spacing: 0.14em;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font);
+  border-radius: 0;
+}
+.ink-app .seg button.active,
+.ink-app .ink-seg button.active {
+  color: var(--cinnabar);
+  font-weight: 600;
+  border-bottom-color: var(--cinnabar);
+}
+
+.ink-liunian-toolbar {
+  justify-content: center;
+}
+.ink-liunian-label {
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+}
+
+.empty-chart-hint {
+  margin: 10px 0 8px;
+}
+@media (min-width: 1024px) {
+  .empty-chart-hint {
+    margin: 0 0 12px;
+    font-size: 12px;
+  }
+  .empty-overlay-hint {
+    margin: 0 24px 12px;
+    font-size: 12px;
+  }
+}
+
+.palace-tags {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.ink-app--viewport .board-wrap {
+  padding: 8px 14px 16px;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  min-width: 0;
+}
+@media (min-width: 1024px) {
+  .ink-app--viewport .board-wrap {
+    padding: 14px 24px 16px;
+  }
+  .chart-layout.has-panel .board-wrap {
+    opacity: 0.55;
+  }
+  .chart-layout.has-panel .palace.sel {
+    opacity: 1;
+  }
+}
+
+.ink-app--viewport .scrim {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+}
+.ink-app--viewport .sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 31;
+}
+
+@media (min-width: 1024px) {
+  .ink-app--viewport .seg.ink-seg {
+    margin: 0 24px;
+  }
+  .ink-app--viewport .toolbar.ink-liunian-toolbar {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
