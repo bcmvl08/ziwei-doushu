@@ -8,9 +8,14 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "tsx scripts/regression/pan-integrity.test.ts && tsx scripts/regression/dst-cn.test.ts && tsx scripts/regression/clock-adjust.test.ts && tsx scripts/regression/sizhu-lichun-boundary.test.ts && tsx scripts/regression/hongluan-tianxi.test.ts && tsx scripts/regression/famous-hour-consistency.test.ts && tsx scripts/regression/iztro-time-index-boundary.test.ts && tsx scripts/regression/solar-date-exists.test.ts && tsx scripts/regression/natal-dual-sihua-same-palace.test.ts && tsx scripts/regression/neutral-naming.test.ts && tsx scripts/regression/display-zh-tw-keys.test.ts",
-    "convert:zh-tw": "node scripts/convert-zh-tw.mjs"
+    "convert:zh-tw": "node scripts/convert-zh-tw.mjs",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
+    "@opennextjs/cloudflare": "^1.20.15",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
@@ -23,7 +28,9 @@
     "react-dom": "^19.2.5"
   },
   "overrides": {
-    "postcss-selector-parser": "^6.1.5"
+    "postcss-selector-parser": "^6.1.5",
+    "glob": "^14.0.3",
+    "minimatch": "^11.0.1"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -34,7 +41,8 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.0",
     "tsx": "^4.19.0",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.148.0"
   },
   "description": "紫微斗數開源排盤引擎（繁體中文 zh-TW 版本，fork from Renhuai123/ziwei-doushu）"
 }

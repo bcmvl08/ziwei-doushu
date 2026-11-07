@@ -1,14 +1,17 @@
 node_modules/
 .next/
+.open-next/
 .vercel/
 .env*
 !.env.example
 dist/
 *.tsbuildinfo
 .DS_Store
-node_modules
 
 # local agent tooling
 agent-tools/
 .env.local
-.next/
+
+# Wrangler local state
+.wrangler/
+.dev.vars
